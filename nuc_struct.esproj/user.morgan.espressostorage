@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ESProjectShowHiddenFilesKey</key>
+	<false/>
+	<key>ESProjectWindowState</key>
+	<dict>
+		<key>ContentSize</key>
+		<string>{1676, 951}</string>
+		<key>ProjectURL</key>
+		<string>file://localhost/Users/morgan/Sites/nuc_struct/nuc_struct.esproj/</string>
+		<key>StateType</key>
+		<string>ProjectWindow</string>
+		<key>TopLeftPoint</key>
+		<string>{-6, 1028}</string>
+	</dict>
+	<key>com.macrabbit.Espresso.FileManager.DisclosureCollapsed</key>
+	<false/>
+	<key>com.macrabbit.Espresso.FileManager.FileControllerState</key>
+	<dict>
+		<key>ExpandedURLs</key>
+		<array>
+			<string>file://localhost/Users/morgan/Sites/nuc_struct/css</string>
+			<string>file://localhost/Users/morgan/Sites/nuc_struct/images</string>
+			<string>file://localhost/Users/morgan/Sites/nuc_struct/js</string>
+		</array>
+	</dict>
+	<key>com.macrabbit.Espresso.Publisher.DisclosureCollapsed</key>
+	<false/>
+	<key>com.macrabbit.Espresso.Workspace.Tabs</key>
+	<dict>
+		<key>Tabs</key>
+		<array>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/morgan/Sites/nuc_struct/css/screen.css</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/morgan/Sites/nuc_struct/js/tangle_example.js</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/morgan/Sites/nuc_struct/js/Tangle.js</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/morgan/Sites/nuc_struct/js/TangleKit.js</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/morgan/Sites/nuc_struct/js/BVTouchable.js</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/morgan/Sites/nuc_struct/js/tangle_example_views.js</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>StateType</key>
+				<string>PreviewTab</string>
+				<key>Title</key>
+				<string>Nucleon Structure</string>
+				<key>URL</key>
+				<string>file:///Users/morgan/Sites/nuc_struct/index.html</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/morgan/Sites/nuc_struct/index.html</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+		</array>
+	</dict>
+	<key>com.macrabbit.Espresso.WorkspaceTabs.DisclosureCollapsed</key>
+	<false/>
+</dict>
+</plist>

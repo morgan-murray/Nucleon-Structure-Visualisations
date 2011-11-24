@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <base target="_top">
+
+    <title>Explorable Explanations</title>
+	<link rel="stylesheet" href="../Fonts/Candal/stylesheet.css" type="text/css">
+	<link rel="stylesheet" href="style.css" type="text/css">
+
+    <script type="text/javascript" src="Lib/mootools-core-1.3.1-full-compat-yc.js"></script>
+    <script type="text/javascript" src="Lib/dsp.js"></script>
+    <script type="text/javascript" src="Lib/BVTouchable.js"></script>
+    <script type="text/javascript" src="Lib/Tangle.js"></script>
+
+    <script type="text/javascript" src="Script/controls.js"></script>
+    <script type="text/javascript" src="Script/views.js"></script>
+    <script type="text/javascript" src="Script/park.js"></script>
+    <script type="text/javascript" src="Script/filter.js"></script>
+    <script type="text/javascript" src="Script/wikipedia.js"></script>
+    <script type="text/javascript" src="Script/main.js"></script>
+
+</head>
+
+<body>
+<div id="everything">
+
+<h1>Explorable Explanations</h1>
+<h3>Bret Victor / March 10, 2011</h3>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- intro -->
+
+<p>What does it mean to be an <strong>active reader</strong>?</p>
+
+<p>An active reader asks questions, considers alternatives, questions assumptions, and even questions the trustworthiness of the author.  An active reader tries to generalize specific examples, and devise specific examples for generalities.  An active reader doesn't passively sponge up information, but uses the author's argument as a springboard for critical thought and deep understanding.</p>
+
+<p>Do our reading environments encourage active reading?  Or do they utterly oppose it?  A typical reading tool, such as a book or website, displays the author's argument, and nothing else.  The reader's line of thought remains internal and invisible, vague and speculative.  We form questions, but can't answer them.  We consider alternatives, but can't explore them.  We question assumptions, but can't verify them.  And so, in the end, we blindly trust, or blindly don't, and we miss the deep understanding that comes from dialogue and exploration.</p>
+
+<p>Explorable Explanations is my umbrella project for ideas that <i>enable and encourage truly active reading</i>.  The goal is to change people's relationship with text.  People currently think of text as <i>information to be consumed</i>.  I want text to be used as an <i>environment to think in</i>.</p>
+
+<p>This essay presents examples of few initial ideas:</p>
+
+<div class="introColumnSet">
+	<div class="introColumn"><p>A <strong>reactive document</strong> allows the reader to play with the author's assumptions and analyses, and see the consquences.</p>
+		<p style="margin-left:-2px;"><a target="_self" href="#reactiveDocument"><img src="Media/IntroTenBrighterIdeas.png" width="195" height="128"></a></p></div>
+
+	<div class="introColumn" style="left:210px;"><p>An <strong>explorable example</strong> makes the abstract 
+concrete, and allows the reader to develop an intuition for how a system works.</p>
+		<p><a target="_self" href="#explorableExample"><img src="Media/IntroFilter.png" width="195" height="128"></a></p></div>
+
+	<div class="introColumn" style="left:420px;"><p><strong>Contextual information</strong> allows the reader to learn related material just-in-time, and cross-check the author's claims.</p>
+		<p><a target="_self" href="#contextualInformation"><img src="Media/IntroWikipedia.png" width="195" height="128"></a></p></div>
+
+</div>
+
+<p>As always, if any of this inspires <i>you</i> to play around with these concepts, I'd love to see what you come up with.</p>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Reactive Documents -->
+
+<h2 id="reactiveDocument">1. Reactive Documents</h2>
+
+<img style="display:block;float:right;margin-left:10px;margin-top:8px;" src="Media/TenBrighterIcon.png" width="80" height="56">
+
+<p><a href="http://worrydream.com/TenBrighterIdeas/">Ten Brighter Ideas</a> was my early prototype of a <strong>reactive document</strong>.  The reader can play with the premise and assumptions of various claims, and see the consequences update immediately. It's like a spreadsheet without the spreadsheet.  <a href="http://worrydream.com/TenBrighterIdeas/">Give it a try.</a></p>
+
+<p>Here is a more simplistic example of the same concept.</p>
+
+<div class="sidebar" style="margin-top:16px;">This propopsition was <a href="http://lwvc.convio.net/site/PageServer?pagename=easyvoter_guide_propositions#21">real</a>, but the analysis is made up for this example, and is probably wildly
+inaccurate.</div>
+
+<div id="parkExample">
+
+	<h5>Proposition 21:  Vehicle License Fee for State Parks</h5>
+	
+	<h6>The way it is now:</h6>
+ 
+	<p>California has <span class="a_parkCount"></span> state parks, including state beaches and historic parks. 
+		The current $<span class="a_oldBudget format_e6"></span> million budget is insufficient to maintain these parks, 
+		and <span class="a_oldClosedParkCount"></span> parks will be shut down at least part-time.
+		Most parks charge <span class="a_oldAdmission format_dollars"></span> per vehicle for admission.</p>
+
+	<h6>What Prop 21 would do:</h6>
+ 
+	<p>Proposes to charge car owners an extra $18 on their annual registration bill, to go into the state park fund.  Cars that pay the charge would have free park admission.</p>
+
+	<h6>Analysis:</h6>
+
+	<p>Suppose that an extra
+		<span class="a_tax format_dollars c_adjustableNumber bounds_0_50"></span> was charged to
+		<span class="a_percentCompliance c_adjustableNumber bounds_0_100_5">%</span> of
+		<span class="a_isTaxPerVehicle c_toggle v_ifElse"><span>vehicle registrations</span><span>California taxpayers</span></span>.
+		Park admission would be <span class="a_newAdmission format_free c_adjustableNumber bounds_0_25"></span> for
+		<span class="a_newAdmissionAppliesToEveryone c_toggle v_ifElse"><span>everyone</span><span>those who paid the charge</span></span>.
+	</p>
+	
+	<p>This would <span class="a_deltaBudget v_plusMinus"><span>collect an extra</span><span>lose</span></span>
+		$<span class="a_deltaBudget format_abs_e6"></span> million
+		($<span class="a_taxCollected format_e6"></span> million from the tax,
+		<span class="a_deltaRevenue v_plusMinus"><span>plus</span><span>minus</span></span>
+		$<span class="a_deltaRevenue format_abs_e6"></span> million
+		<span class="a_deltaRevenue v_plusMinus"><span>additional</span><span>lost</span></span> revenue from admission)
+		for a total state park budget of $<span class="a_budget format_e6"></span> million.
+		
+	<span class="a_scenarioIndex v_switch">
+			<span>This is not sufficient to maintain the parks, and
+				<span class="a_closedParkCount"></span>	parks would be shut down at least part-time.</span>
+			<span>This is sufficient to maintain the parks in their current state, but not fund
+				a program to bring safety and cleanliness up to acceptable standards.</span>
+			<span>This is sufficient to maintain the parks in their current state, plus fund a program to 
+				bring safety and cleanliness up to acceptable standards over the next
+				<span class="a_restorationTime"></span> years.</span>
+			<span>This is sufficient to maintain the parks and bring safety and cleanliness up to acceptable standards,
+				leaving a $<span class="a_surplus format_e6"></span> million per year surplus.</span>
+		</span>
+	</p>
+	
+	<p>Park attendance would
+		<span class="a_deltaVisitorCount v_plusMinus"><span>rise</span><span>fall</span></span> by
+	 	<span class="a_relativeVisitorCount format_percent"></span>, to
+	 	<span class="a_newVisitorCount format_e6"></span> million visits each year.</p>
+
+</div>
+
+<p>Is this a good proposition?  It's hard to evaluate without context.  The active reader might wonder, "Why $18?  What if the tax were more or less?"  Or, "Could park admission be raised instead?"  If we were reading this on paper, such questions could only be answered by a phone call or heavy research.
+
+<p>Fortunately, this isn't paper.  Some parts of the analysis above are <span style="border-bottom: dotted 1px #000;">underlined</span> -- try adjusting them and see if you can answer those questions.</p>
+
+<p>Notice how the consequences of your adjustments are reflected in the following paragraph.  The reader can explore alternative scenarios, understand the tradeoffs involved, and come to a more confident conclusion about whether the proposition is a good decision.</p>
+
+
+<h4>Modeling</h4>
+
+<p>There's nothing new about scenario modeling.  The authors of this proposition surely had an Excel spreadsheet which answered the same questions.  But a spreadsheet is not an <i>explanation</i>.  It is merely a dataset and model; it cannot be <i>read</i>.  An explanation requires an <strong>author</strong>, to interpret the results of the model, and present them to the reader via language and graphics.</p>
+
+<p>The reactive document integrates spreadsheet-like models into authored text.  It can be read at multiple levels, depending on the reader's level of interest.  The hurried reader can skim it.  The casual reader can read it as-is.  The curious reader can adjust the author's scenarios.  The engaged reader can explore scenarios of his own devising.</p>
+
+<p>Unlike a spreadsheet, the barrier to exploration here is extremely low -- simply click and drag.  This invites casual readers to become engaged and start exploring.  It transforms readers from passive to active.</p>
+
+
+<h4>Transparency</h4>
+
+<p>On the author's side, this form encourages a sort of transparency.  The author's argument cannot simply be a hodge-podge of soundbites and unsourced data.  A reactive document requires the author to disclose the models behind his argument, to open them up for scrutiny.  (In <a href="http://worrydream.com/TenBrighterIdeas/">Ten Brighter Ideas</a>, the reader can even directly edit the source code of the model, as well as visit the primary sources for all data.)</p>
+
+<p>Dishonest authors will always exist.  They might use models based on faulty reasoning or data, but transparency means that the faulty model is available to be examined and refuted.  Or they might offer no model at all, but perhaps readers will learn to be skeptical of non-explorable arguments.</p>
+
+
+<h4>Debate</h4>
+
+<p>Multiple authors could model the same situation, and readers could compare.  If you look at the groups <a href="http://www.yesforstateparks.com/">for</a> and <a href="http://www.voteno21.com/">against</a> the above proposition, you'll see they're basically just hurling around unsourced soundbites, leaving readers little to go on besides emotional appeal.  What if both sides were expected to offer reactive documents, and the reader could critically explore their predicted scenarios?</p>
+
+<p>What if readers <i>wanted</i> to explore such scenarios, because it was actually <strong>fun?</strong></p>
+
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Explorable Examples -->
+
+<h2 id="explorableExample">2. Explorable Examples</h2>
+
+<p>The following is a typical description of a digital filter, as you might find in a typical textbook.</p>
+
+<div id="filterExample">
+
+	<p>Below is a simplified digital adaptation of the analog state variable filter.</p>
+
+	<p class="filterSidebar">This topology is particularly useful for embedded audio processing, because <i>F<sub>c</sub></i> (cutoff frequency) and <i>Q</i> (resonance) are controlled by independent coefficients, <i>k<sub>f</sub></i> and <i>k<sub>q</sub></i>.  (With most filters, the coefficients are functions of both parameters, which precludes pre-calculated lookup tables.)</p>
+
+	<div class="filterIndent">
+		<canvas class="v_stepPlot a_kf showOnDrag" style="left:-50px;top:-10px;" width="48" height="64"></canvas>
+		<canvas class="v_timePlot a_kf showOnDrag" style="left:324px;top:-10px;" width="128" height="64"></canvas>
+
+		<div class="filterDynamicLabel a_kf format_p3 showOnDrag" style="left:70px; top:4px;"></div>
+		<div class="filterDynamicLabel a_kf format_p3 showOnDrag" style="left:180px; top:4px;"></div>
+		<div class="filterDynamicLabel a_kq format_neg_p3 showOnDrag" style="left:71px; top:48px;"></div>
+
+		<img src="Media/FilterSchematic.png" width="325" height="110">
+	</div>
+
+	<p>The coefficients and transfer function are:</p>
+
+	<div class="filterIndent">
+		<div class="filterDynamicCoef showOnDrag" style="left:34px;top:0px;width:70px;height:35px;">
+			<div style="position:relative;top:9px;left:2px;"><span class="a_kf format_p3"></span></div>
+		</div>
+		<div class="filterDynamicCoef showOnDrag" style="left:141px;top:0px;width:40px;height:35px;">
+			<div style="position:relative;top:9px;left:2px;"><span class="a_kq format_p3"></span></div>
+		</div>
+
+		<div class="filterDynamicCoef showOnDrag" style="left:141px;top:46px;width:40px;height:16px;">
+			<div style="position:relative;top:0px;left:2px;"><span class="a_b0 format_p3"></span></div>
+		</div>
+		<div class="filterDynamicCoef showOnDrag" style="left:72px;top:67px;width:91px;height:16px;">
+			<div style="position:relative;top:0px;left:58px;"><span class="a_a1neg format_p3"></span></div>
+		</div>
+		<div class="filterDynamicCoef showOnDrag" style="left:196px;top:67px;width:56px;height:16px;">
+			<div style="position:relative;top:0px;left:22px;"><span class="a_a2 format_p3"></span></div>
+		</div>
+
+		<canvas class="v_polePlot a_a1 showOnDrag" width="160" height="160" style="left:276px;top:-36px;"></canvas>
+
+		<img src="Media/FilterEquations.png" width="281" height="92">
+	</div>
+
+
+	<p>Some example frequency responses:</p>
+	
+	<div class="filterIndent" style="position:relative;">
+		<div class="filterFreqPlot">
+			<canvas class="v_freqPlot a_kf1" width="256" height="128"></canvas>
+			<div class="c_filterKnob a_kf1"></div>
+			<div class="filterParams" style="left:5px;top:0px;">
+				<i>F<sub>c</sub></i> = <span class="a_fc1 format_freq"></span><br>
+				<i>Q</i> = <span class="a_q1 format_p2"></span>
+			</div>
+			<div class="filterUnstable v_if a_unstable1">Unstable</div>
+		</div>
+		<div class="filterFreqPlot" style="position:absolute; top:0px; left:274px;">
+			<canvas class="v_freqPlot a_kf2" width="256" height="128"></canvas>
+			<div class="c_filterKnob a_kf2"></div>
+			<div class="filterParams" style="left:5px;top:0px;">
+				<i>F<sub>c</sub></i> = <span class="a_fc2 format_freq"></span><br>
+				<i>Q</i> = <span class="a_q2 format_p2"></span>
+			</div>
+			<div class="filterUnstable v_if a_unstable2">Unstable</div>
+		</div>
+	</div>
+
+	<div class="a_kf v_audioPlayer"></div>
+	
+</div>
+
+<p>Our author was kind enough to provide a couple of examples -- many authors would consider the equations enough.  But we care about the filter's
+ <i>dynamic</i> behavior -- how the response changes as we vary the parameters <i>F<sub>c</sub></i> and <i>Q</i> -- 
+and two static examples give us little insight.</p>
+
+<p>Fortunately, this isn't a physical book, so we aren't limited to static examples.  The <span style="color:#00f">blue text</span> indicates that there's something to play with.  Try playing with it.</p>
+
+<p>We aren't restricted to the author's choice of examples -- we can see the filter's response for any parameters we want.  We can make <strong>discoveries</strong> that the author didn't bother to mention.  (For instance, we see that this filter can have stability problems at low Q.)  As we play, we think of <strong>questions</strong> (In which regions is this filter stable? Where do we start losing the lowpass response?) and we can experiment to answer those questions immediately.</p>
+
+
+<h4>Intuition</h4>
+
+<div class="sidebar">By the way, this frequency response is not simply plotted from the transfer function.  Instead, the impulse response of the actual filter is simulated, and its FFT is shown.  I think this is more honest, and would work even if we allowed the reader to change the filter topology.  (The z-plane pole positions are from the transfer function, however.)</div>
+
+<p>By watching the result change as we adjust parameters, we can develop an <strong>intuition</strong> for the system's behavior.  This is helped by the figure's use of <strong>multiple representations</strong>.  We are shown <i>six</i> different ways of characterizing the filter:</p>
+
+<p style="margin-left:30px; margin-top:20px;"><img src="Media/FilterRepresentations.png" width="571" height="63"></p>
+
+<p>Each representation gives a unique insight.  By watching how they all respond to our experimentation, and how they dance with one another, we can develop a deep understanding -- of not just this filter topology, but digital filtering in general.  Exploring the filter space becomes a game.</p>
+
+<div id="filterAudioSwitch"></div>
+
+<p>Incidentally, non-engineers may appreciate yet another representation.  Flip the switch to the left, and try playing again.</p>
+
+
+<h4>Trust</h4>
+
+<img style="display:block;margin-left:30px;margin-top:25px;float:right;" src="Media/FilterFrequencyApprox.png" width="120" height="115">
+
+<p>I've talked about trust, and verifying the author's claims.  You may be surprised that this concern is relevant even in an engineering textbook.  Playing with the filter response, we see that our author hasn't been entirely honest.  The formula for <i>F<sub>c</sub></i> is actually an approximation.  To the right, notice that the blue line (the nominal <i>F<sub>c</sub></i>) doesn't line up with the peak (the actual resonant frequency).</p>
+
+<p>By playing with the parameters, we can get a sense for where the approximation holds.  (It's actually pretty good at high Q, which is where we typically care about exact frequency.)  In fact, the entire premise of the filter, as stated in the sidebar (that the parameters are separable) might be considered marketing-speak.  It's not strictly true at all, although it appears to be fairly close for 0.3 &lt; <i>k<sub>f</sub></i> &lt; 0.5 or so, and we can use this insight to decide whether to oversample the filter.</p>
+
+<h4>Explanation</h4>
+
+<p>It's tempting to be impressed by the novelty of an interactive widget such as this, but the interactivity itself is not really the point.
+The primary point of this example -- the reason I call it an "explorable explanation" -- is the subtlety with which <strong>the explorable is integrated with the explanation</strong>.</p>
+
+<p>Like the proposition example earlier, the filter description works as a static explanation -- it can be <strong>read like normal text</strong>.  The reader is not <i>forced</i> to interact in order to learn.  The reader interacts if he wants to <i>go deeper</i>, if he has piqued curiosity or unanswered questions.  There are no UI elements screaming for attention.  The reader is not transported off to a separate "interactive" context.  Instead, the reader simply nudges the examples that the author has already presented.</p>
+
+<p>Most interactive widgets dump the user in a sandbox and say "figure it out for yourself".  <i>Those are not explanations.</i>  To me, an essential aspect of the "explorable explanation" concept is that <strong>the author holds up his end of the conversation</strong>.  The author must guide the reader, and provide a structure for the learning experience.  Only then can the reader respond, by asking and answering the questions that the author provokes.</p>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Contextual Information -->
+
+<h2 id="contextualInformation">3. Contextual Information</h2>
+
+<p>As much as we might wish authors to write explorable explanations, many won't.  And even authors with good intentions can't predict everything that the reader will want to explore.  And some authors, again, don't have good intentions.  So, let's ask:</p>
+
+<p>How do we make existing documents explorable?  How can active readers ask questions and question assumptions while <strong>reading normal text?</strong></p>
+
+<p>For one simple example, consider the following passage that you might find on a typical advocacy site:</p>
+
+<div id="wikipediaExample">
+
+	<h5>Renewable Energy in California</h5>
+
+	<p>California leads the nation in installed wind generation capacity.  Over a third of the wind power in the United States is generated in California.  In 2004, wind energy in California produced 4,258 million kilowatt-hours of electricity, about 1.5 percent of the state's total electricity. That's more than enough to light a city the size of San Francisco.</p>
+
+	<p>More than 13,000 of California's wind turbines, or 95 percent of all of California's wind generating capacity and output, are located in three primary regions: Altamont Pass (east of San Francisco - a portion of which is shown on the right in this photo from NREL), Tehachapi (south east of Bakersfield) and San Gorgonio (near Palm Springs, east of Los Angeles).</p>
+
+</div>
+
+<p>Does California really lead the nation in wind capacity?  Let's find out:</p>
+
+<ul>
+<li>Move your mouse pointer over the word "California" in the passage above.</li>
+<li>Press the "<strong>W</strong>" key (for "Wikipedia").</li>
+<li>Type "wind".</li>
+</ul>
+
+<p>We learn that Texas and Iowa are now ahead of California.  It appears that this article is old, or is based on outdated information.  Knowing this, we can take the rest of the article with a grain of salt.  Or perhaps we're inspired to find out when the switch took place, and what caused it.</p>
+
+<p>Try searching on other words.</p>
+
+
+<h4>Encouragement</h4>
+
+<p>There's nothing new about looking up related information.  You probably do it frequently -- by selecting a word, copying it to the clipboard, opening a new tab, pasting the word into the Google search field, scanning through the Google results, clicking on the Wikipedia article, scanning the article for what you want to know, closing the tab, and finally trying to find your place in the original article.</p>
+
+<p>The example above does essentially just that, except it's almost effortless and you don't lose your place.</p>
+
+<p>This makes a huge difference.  I believe that readers are constantly making tradeoffs between <strong>curiosity and laziness</strong>, constantly evaluating the effort required to be an active reader.  Dramatically lowering the effort barrier can encourage readers to ask every question that comes to mind.</p>
+
+<p>Again, the point is not about the particular interactions of this particular example.  It's the larger goal of giving control to the reader.  Encouraging readers to ask questions, verify assumptions, make connections, and follow their own interests.  Treating the author's text as a base layer for hosting the reader's own explorations.</p>
+
+
+<h2 id="conclusion">4. What to do?</h2>
+
+<p>I think that <a href="http://worrydream.com/TenBrighterIdeas/">Ten Brighter Ideas</a>,
+and the three smaller examples above, merely hint at the potential of active reading.
+The goal of Explorable Explanations is to change people's relationship with text.  People currently think of text as <strong>information to be consumed</strong>.  I want text to be an <strong>environment to think in</strong>.</p>
+
+<p>The three steps forward, I think:</p>
+
+<p><strong>Examples.</strong>  Almost everywhere, you can see static explanations begging to be brought to life.  Let's do so.  Each exercise gives a better understanding of the possibilities, leads to the invention of better techniques, and can help popularize the concept.</p>
+
+<p><strong>Tools.</strong>  Explorable explanations won't catch on if they're difficult to author.  Tools must be invented that enable and encourage authors to make their work explorable.  Can it be almost as easy as writing static text?</p>
+
+<p>I released <a href="http://worrydream.com/Tangle/">Tangle</a>, the JavaScript library behind <a href="http://worrydream.com/TenBrighterIdeas/">Ten Brighter Ideas</a> and the examples above.  It's a nice bootstrapping step, but far from the goal of an authoring tool.  What might such a tool look like?  Some sort of fusion of word processor and spreadsheet?  An <a href="http://inform7.com/">Inform</a>-like environment for composing dynamic text?</p>
+
+<p>What about tools for exploring normal text, as in the last example above?</p>
+
+<p><strong>Culture.</strong>  How do we make readers <i>demand</i> explorable explanations, and reject static text?</p>
+
+<p style="margin-top:40px; margin-bottom:-25px;"><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://worrydream.com/ExplorableExplanations/" data-count="none" data-via="worrydream">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></p>
+
+</div>
+</body></html>
